@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import image from "./questionmark.png";
 
+const API_KEY = "1234";
+
 function App() {
   const [results, setResults] = useState([]);
   const [longitude, setLongitude] = useState("");
@@ -11,7 +13,7 @@ function App() {
 
   useEffect(() => {
     getLocation();
-  }, []);
+  }, );
 
   var x = document.getElementById("demo");
   function getLocation() {
@@ -63,7 +65,7 @@ function App() {
     console.log(results.length)
     if (latitude !== "" || longitude !== "") {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
       );
 
       const data = await response.json();
@@ -87,7 +89,7 @@ function App() {
               Click on button below to check out today's weather forecast
             </h2>
           </>
-        )}a
+        )}
         {(results.length !== 0) && (
           <>
             <img
