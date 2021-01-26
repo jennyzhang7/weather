@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import image from "./questionmark.png";
 
-const API_KEY = "1234";
-
 function App() {
   const [results, setResults] = useState([]);
   const [longitude, setLongitude] = useState("");
@@ -65,7 +63,7 @@ function App() {
     console.log(results.length)
     if (latitude !== "" || longitude !== "") {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`
       );
 
       const data = await response.json();
